@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <div class="col-auto sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h5><i class="fas fa-history"></i> 历史记录</h5>
+                <button class="btn btn-sm btn-outline-secondary" id="clearHistory">
+                    <i class="fas fa-trash"></i> 清空
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <div id="historyList">
+                    <div class="text-center text-muted mt-5">
+                        <i class="fas fa-inbox fa-2x"></i>
+                        <p class="mt-2">暂无历史记录</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col main-content">
+            <nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <div class="d-flex">
+                        <button class="btn btn-outline-primary me-2" id="toggleSidebar">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <button class="btn btn-outline-success" id="newConversation">
+                            <i class="fas fa-plus"></i> 新对话
+                        </button>
+                    </div>
+                    <div class="navbar-brand mx-auto">
+                        <i class="fas fa-robot"></i> RAG-Mind
+                    </div>
+                    <div class="navbar-text">
+                        <span id="statusIndicator" class="badge bg-success">在线</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="chat-container">
+                <div id="chatContent">
+                    <div class="welcome-screen" id="welcomeScreen">
+                        <div class="text-center">
+                                                                                        <div class="avatar mb-4">
+                                                                                            <!-- 使用仓库根目录下的 image.png 作为机器人头像，样式在 CSS 中控制为圆形 -->
+                                                                                            <img src="/static/img/image.png" alt="RAG-Mind" class="welcome-avatar" />
+                                                                                        </div>
+                            <h2>你好，我是RAG-Mind</h2>
+                            <p class="lead">我可以帮你找到数据库的信息，把你的疑问告诉我吧</p>
+                            <div class="system-stats mt-4">
+                                <div id="systemStatus">
+                                    <i class="fas fa-spinner fa-spin"></i> 正在加载系统状态...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages" style="display: none;"></div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="messageInput" placeholder="请输入您的问题...">
+                        <button class="btn btn-primary" type="button" id="sendButton">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                        <div class="spinner-border spinner-border-sm text-primary" role="status">
+                            <span class="visually-hidden">思考中...</span>
+                        </div>
+                        <span class="ms-2">思考中...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+    window.RAGMindApp.init();
+});
+</script>
+{% endblock %}

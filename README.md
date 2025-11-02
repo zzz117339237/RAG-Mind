@@ -1,6 +1,6 @@
 # RAG-Mind
-雷石-AI参赛项目
-一个基于 RAG 思路的公司文档问答服务。提供：
+
+一个基于 RAG 思路的公司文档问答服务。此仓库提供：
 
 - 后端：FastAPI（入口 `app.py`）
 - 文本处理与分块：`utils/text_processor.py`
